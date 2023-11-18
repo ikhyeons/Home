@@ -1,9 +1,12 @@
-import Phase1 from "./Phase1";
 import styled from "styled-components";
 import { useState, useEffect } from "react";
+import Phase0 from "./Phase0";
+import Phase1 from "./Phase1";
 import Phase2 from "./Phase2";
+
 import { useRecoilState } from "recoil";
-import { AisWheelReady } from "../utils/recoilStore";
+import { AisWheelReady, Aphase } from "../utils/recoilStore";
+
 const SWrap = styled.section`
   background: rgb(30, 40, 30);
   height: 100dvh;
@@ -12,23 +15,30 @@ const SWrap = styled.section`
 `;
 
 function Wrap() {
-  const [phase, setPhase] = useState(2);
+  const [phase, setPhase] = useRecoilState(Aphase);
   const [isWheelReady, setIsWheelReady] = useRecoilState(AisWheelReady);
   useEffect(() => {
+    setIsWheelReady(false);
     setTimeout(() => {
       setIsWheelReady(true);
-    }, 1000);
-  }, []);
+    }, 500);
+  }, [phase]);
   return (
     <SWrap
       onWheel={(e) => {
         if (isWheelReady) {
-          if (e.deltaY > 0) console.log("down");
-          else console.log("up");
+          if (e.deltaY > 0) setPhase((prev) => (prev != 2 ? prev + 1 : prev));
+          else setPhase((prev) => (prev != 0 ? prev - 1 : prev));
         }
       }}
     >
-      {phase == 1 ? <Phase1 /> : phase == 2 ? <Phase2 /> : null}
+      {phase == 0 ? (
+        <Phase0 />
+      ) : phase == 1 ? (
+        <Phase1 />
+      ) : phase == 2 ? (
+        <Phase2 />
+      ) : null}
     </SWrap>
   );
 }

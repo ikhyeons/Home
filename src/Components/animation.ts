@@ -13,6 +13,18 @@ export const drawLine = keyframes<{ r: number }>`
   }
 `;
 
+export const drawRedBack = keyframes`
+  0% {
+    width : 0px;
+  }
+  60%{
+    width : 0px;
+  }
+  100% {
+    width: 500px;
+  }
+`;
+
 export const FadeIn = keyframes`
   0% {
     opacity : 0.3;

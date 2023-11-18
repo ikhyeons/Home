@@ -1,17 +1,20 @@
-import {
-  SAbsoluteDiv,
-  SAbsoluteSpan,
-} from "../Components/commonStyledComponent";
+import React from "react";
+import { SAbsoluteDiv, SAbsoluteSpan } from "./commonStyledComponent";
+import styled from "styled-components";
+import { drawRedBack } from "./animation";
+
+const SRedBack = styled(SAbsoluteDiv)`
+  background-color: red;
+  height: 110vh;
+  transform: translateY(-35px);
+  width: 500px;
+  rotate: -5deg;
+  animation: ${drawRedBack} 2.5s;
+`;
 function Phase2() {
   return (
     <>
-      <SAbsoluteSpan
-        style={{ fontSize: "25px", color: "lightgrey" }}
-        left={873}
-        bottom={1}
-      >
-        Ski ls
-      </SAbsoluteSpan>
+      <SRedBack left={1508} />
     </>
   );
 }

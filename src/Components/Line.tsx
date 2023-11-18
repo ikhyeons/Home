@@ -14,8 +14,8 @@ const SLine = styled.div<{ r: number; ls: number; ts: number }>`
       : `min(calc(100vw / ${Math.cos((props.r * Math.PI) / 180)}), 1920px)`};
   position: absolute;
   transform: translate(${(props) => props.ls}px, ${(props) => props.ts}px);
-  animation: ${drawLine} 1.5s ease-out, ${FadeIn} 1s linear;
-  transition: rotate 2s, transform 2s;
+  animation: ${drawLine} 2.5s ease-out, ${FadeIn} 1s linear;
+  transition: rotate 1.5s, transform 1.5s;
 `;
 
 function Line({ r, ls, ts }: { r: number; ls: number; ts: number }) {

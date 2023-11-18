@@ -1,16 +1,24 @@
 import Line from "./Components/Line";
 import Wrap from "./Components/Wrap";
 import { useRecoilState } from "recoil";
-import { AisWheelReady } from "./utils/recoilStore";
+import { AisWheelReady, Aphase } from "./utils/recoilStore";
 function App() {
   const [isWheelReady, setIsWheelReady] = useRecoilState(AisWheelReady);
+  const [phase, setPhase] = useRecoilState(Aphase);
+
   const linePosition = [
-    [0, 300, 700],
-    [90, 0, -910],
+    { r: 0, ls: 300, ts: 700 },
+    { r: 90, ls: 0, ts: -910 },
+    { r: 85, ls: 0, ts: -1450 },
   ];
+
   return (
     <>
-      <Line r={90} ls={0} ts={-910} />
+      <Line
+        r={linePosition[phase].r}
+        ls={linePosition[phase].ls}
+        ts={linePosition[phase].ts}
+      />
       <Wrap />
     </>
   );
