@@ -1,12 +1,17 @@
 import styled from "styled-components";
+import useDelay from "../utils/hooks/useActive";
+import { gageUp } from "./animation";
 
 const SGage = styled.div`
   width: 100%;
   height: 20px;
   background-color: white;
   display: flex;
+  position: relative;
 `;
-const SBar = styled.div<{ gage: number }>`
+const SBar = styled.div<{ gage: number; active: boolean }>`
+  display: ${(props) => (props.active ? null : "none")};
+  animation: ${gageUp} 2s;
   width: ${(props) => props.gage}%;
   height: 100%;
   background-color: ${(props) => {
@@ -19,7 +24,6 @@ const SBar = styled.div<{ gage: number }>`
     position: absolute;
     left: ${(props) => props.gage}%;
     transform: translate(-50%, 20px);
-
     content: "${(props) => {
       if (props.gage <= 30) return "know";
       else if (props.gage <= 60) return "tried";
@@ -29,9 +33,10 @@ const SBar = styled.div<{ gage: number }>`
 `;
 
 function Gage({ gage }: { gage: number }) {
+  const [active] = useDelay([500]);
   return (
     <SGage>
-      <SBar gage={gage} />
+      <SBar gage={gage} active={active} />
     </SGage>
   );
 }

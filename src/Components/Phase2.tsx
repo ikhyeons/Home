@@ -12,11 +12,7 @@ const SRedBack = styled(SAbsoluteDiv)`
   animation: ${drawRedBack} 2.5s;
 `;
 function Phase2() {
-  return (
-    <>
-      <SRedBack left={1508} />
-    </>
-  );
+  return <></>;
 }
 
 export default Phase2;

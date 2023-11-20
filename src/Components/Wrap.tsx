@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import Phase0 from "./Phase0";
 import Phase1 from "./Phase1";
 import Phase2 from "./Phase2";
@@ -21,7 +21,7 @@ function Wrap() {
     setIsWheelReady(false);
     setTimeout(() => {
       setIsWheelReady(true);
-    }, 500);
+    }, 1500);
   }, [phase]);
   return (
     <SWrap
@@ -32,13 +32,9 @@ function Wrap() {
         }
       }}
     >
-      {phase == 0 ? (
-        <Phase0 />
-      ) : phase == 1 ? (
-        <Phase1 />
-      ) : phase == 2 ? (
-        <Phase2 />
-      ) : null}
+      <Phase0 />
+      {phase >= 1 ? <Phase1 /> : null}
+      {phase >= 2 ? <Phase2 /> : null}
     </SWrap>
   );
 }

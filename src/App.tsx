@@ -7,9 +7,9 @@ function App() {
   const [phase, setPhase] = useRecoilState(Aphase);
 
   const linePosition = [
-    { r: 0, ls: 300, ts: 700 },
-    { r: 90, ls: 0, ts: -910 },
-    { r: 85, ls: 0, ts: -1450 },
+    { r: 0, ls: "300px", ts: "700px" },
+    { r: 0, ls: "300px", ts: "150px" },
+    { r: 90, ls: "250px", ts: "0px" },
   ];
 
   return (

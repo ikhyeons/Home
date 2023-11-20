@@ -1,36 +1,41 @@
-import { SAbsoluteDiv, SAbsoluteSpan } from "./commonStyledComponent";
 import styled from "styled-components";
 import Gage from "./Gage";
+import { useRecoilState } from "recoil";
+import { Aphase } from "../utils/recoilStore";
+import useDelay from "../utils/hooks/useActive";
+import { FadeUp } from "./animation";
+import Skillbox from "./Skillbox";
 
-const SSkillBox = styled(SAbsoluteDiv)`
+const SPhase1 = styled.div<{ phase: number }>`
+  position: absolute;
+  left: 300px;
+  top: ${(props) => (props.phase < 2 ? "300px" : "-600px")};
+  width: calc(100% - 300px);
+  transition: top 1.5s;
   display: flex;
-  flex-direction: column;
-  border: 1px solid white;
-  border-radius: 10px;
-  padding: 10px;
-  flex-wrap: wrap;
-  margin: 10px 0;
 `;
 
-const SSpan = styled.span``;
-
-const SDiv = styled.div`
-  height: 110px;
-  width: 250px;
-  font-weight: bold;
-  font-size: 22px;
-  margin: 10px 0;
+const SSkills = styled.span<{ active: boolean }>`
+  position: absolute;
+  left: -105px;
+  top: 20px;
+  font-size: 40px;
+  display: ${(props) => (props.active ? null : "none")};
+  animation: ${FadeUp} 1.5s;
 `;
+
 function Phase1() {
+  const [phase, setPhase] = useRecoilState(Aphase);
+  const [skills, box1, box2, box3] = useDelay([500, 1200, 1700, 2200]);
   const skillList = {
-    front: [
+    frontEnd: [
       { name: "HTML", gage: 70 },
       { name: "CSS", gage: 70 },
       { name: "JS", gage: 70 },
       { name: "React", gage: 70 },
       { name: "Next", gage: 60 },
     ],
-    back: [
+    backEnd: [
       { name: "Node", gage: 70 },
       { name: "MySQL", gage: 70 },
       { name: "AWS", gage: 60 },
@@ -44,48 +49,12 @@ function Phase1() {
     ],
   };
   return (
-    <>
-      <SAbsoluteDiv top={30} left={400}>
-        <SSpan>FrontEnd</SSpan>
-        <SSkillBox>
-          {skillList.front.map((data, i) => (
-            <SDiv key={i}>
-              {data.name}
-              <Gage gage={data.gage} />
-            </SDiv>
-          ))}
-        </SSkillBox>
-      </SAbsoluteDiv>
-      <SAbsoluteDiv top={30} left={1050}>
-        <SSpan>BackEnd</SSpan>
-        <SSkillBox>
-          {skillList.back.map((data, i) => (
-            <SDiv key={i}>
-              {data.name}
-              <Gage gage={data.gage} />
-            </SDiv>
-          ))}
-        </SSkillBox>
-      </SAbsoluteDiv>
-      <SAbsoluteDiv top={30} left={1400}>
-        <SSpan>else</SSpan>
-        <SSkillBox>
-          {skillList.else.map((data, i) => (
-            <SDiv key={i}>
-              {data.name}
-              <Gage gage={data.gage} />
-            </SDiv>
-          ))}
-        </SSkillBox>
-      </SAbsoluteDiv>
-      <SAbsoluteSpan
-        style={{ fontSize: "25px", color: "lightgrey" }}
-        left={873}
-        bottom={1}
-      >
-        Ski ls
-      </SAbsoluteSpan>
-    </>
+    <SPhase1 phase={phase}>
+      <SSkills active={skills}>Skills</SSkills>
+      <Skillbox active={box1} name={"FrontEnd"} data={skillList.frontEnd} />
+      <Skillbox active={box2} name={"BackEnd"} data={skillList.backEnd} />
+      <Skillbox active={box3} name={"else"} data={skillList.else} />
+    </SPhase1>
   );
 }
 
