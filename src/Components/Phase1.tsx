@@ -41,7 +41,7 @@ function Phase1() {
       { name: "AWS", gage: 60 },
     ],
     else: [
-      { name: "Typescript", gage: 62 },
+      { name: "TS", gage: 62 },
       { name: "Git", gage: 60 },
       { name: "GitActions", gage: 60 },
       { name: "Notion", gage: 60 },

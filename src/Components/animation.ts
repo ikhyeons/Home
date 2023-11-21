@@ -22,18 +22,6 @@ export const gageUp = keyframes<{ gage: number }>`
     width: ${(props) => props.gage}
 `;
 
-export const drawRedBack = keyframes`
-  0% {
-    width : 0px;
-  }
-  60%{
-    width : 0px;
-  }
-  100% {
-    width: 500px;
-  }
-`;
-
 export const FadeIn = keyframes`
   0% {
     opacity : 0;
@@ -47,6 +35,17 @@ export const FadeUp = keyframes`
   0% {
     opacity : 0;
     transform : translateY(20px);
+  }
+  100% {
+    opacity : 1;
+    transform : translateY(0px);
+  }
+`;
+
+export const FadeDown = keyframes`
+  0% {
+    opacity : 0;
+    transform : translateY(-30px);
   }
   100% {
     opacity : 1;
