@@ -1,8 +1,9 @@
-import { SAbsoluteDiv, SAbsoluteSpan } from "./commonStyledComponent";
+import { SAbsoluteDiv, SAbsoluteSpan } from "./styledComponent";
 import styled from "styled-components";
 
 import Line from "./Line";
-import { FadeDown } from "./animation";
+import { FadeDown, FadeUp } from "./animation";
+import useDelay from "../utils/hooks/useActive";
 const SProject = styled(SAbsoluteSpan)`
   font-size: 40px;
   animation: ${FadeDown} 2.5s linear;
@@ -11,16 +12,18 @@ const SProject = styled(SAbsoluteSpan)`
 const SMain = styled(SAbsoluteDiv)`
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
-  padding: 0 50px;
+  padding: 0 40px 0 0;
+  margin: 0 80px 0 0;
 `;
 
-const SImageCard = styled.div`
+const SProjectCard = styled.div<{ active: boolean }>`
   width: 400px;
   height: 300px;
-  margin: 30px 10px;
+  margin: 30px 50px;
   background: grey;
   position: relative;
+  display: ${(props) => (props.active ? null : "none")};
+  animation: ${FadeUp} 1.5s;
 `;
 const SImg = styled.img`
   width: 400px;
@@ -28,8 +31,11 @@ const SImg = styled.img`
 `;
 const SSpan = styled.span`
   position: absolute;
+  width: 250px;
+  text-align: center;
   left: 50%;
   top: 50%;
+  transform: translateX(-50%);
 `;
 function Phase2() {
   const linePosition = [
@@ -39,6 +45,17 @@ function Phase2() {
       ts: "100px",
     },
   ];
+
+  const projectListData = [
+    { name: "블로그 프로젝트", img: "" },
+    { name: "자취방 양도 프로젝트", img: "" },
+    { name: "협업 웹 프로젝트", img: "" },
+    { name: "텔로 드론 프로젝트", img: "" },
+    { name: "동물 분양 프로젝트", img: "" },
+    { name: "ICT GPT Connector 프로젝트", img: "" },
+  ];
+
+  const active = useDelay([1000, 1500, 2000, 2500, 3000, 3500]);
   return (
     <>
       {linePosition.map((data, i) => (
@@ -49,30 +66,12 @@ function Phase2() {
         PROJECT
       </SProject>
       <SMain left={280} top={140}>
-        <SImageCard>
-          <SImg src="" alt="블로그 프로젝트" />
-          <SSpan>gd</SSpan>
-        </SImageCard>
-        <SImageCard>
-          <SImg src="" alt="자취방 프로젝트" />
-          <SSpan></SSpan>
-        </SImageCard>
-        <SImageCard>
-          <SImg src="" alt="협업 툴 프로젝트" />
-          <SSpan></SSpan>
-        </SImageCard>
-        <SImageCard>
-          <SImg src="" alt="텔로 드론 플로젝트" />
-          <SSpan></SSpan>
-        </SImageCard>
-        <SImageCard>
-          <SImg src="" alt="동물 분양 프로젝트" />
-          <SSpan></SSpan>
-        </SImageCard>
-        <SImageCard>
-          <SImg src="" alt="ICT GPT Connector 프로젝트" />
-          <SSpan></SSpan>
-        </SImageCard>
+        {projectListData.map((data, i) => (
+          <SProjectCard active={active[i]} key={i}>
+            <SImg src={data.img} alt={data.name} />
+            <SSpan>{data.name}</SSpan>
+          </SProjectCard>
+        ))}
       </SMain>
     </>
   );
