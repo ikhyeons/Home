@@ -3,10 +3,10 @@ import Gage from "./Gage";
 import { FadeUp } from "./animation";
 import useDelay from "../utils/hooks/useActive";
 
-const SSkillList = styled.div<{ active: boolean; name: string }>`
+const SSkillList = styled.div<{ $active: boolean; name: string }>`
   display: flex;
   flex-direction: column;
-  display: ${(props) => (props.active ? null : "none")};
+  display: ${(props) => (props.$active ? null : "none")};
   animation: ${FadeUp} 1s;
   margin-right: 60px;
   width: ${(props) =>
@@ -28,23 +28,23 @@ const SSkillBox = styled.div`
   flex-wrap: wrap;
 `;
 
-const SDiv = styled.div<{ active: boolean }>`
+const SDiv = styled.div<{ $active: boolean }>`
   height: 110px;
   width: 250px;
   font-weight: bold;
   font-size: 22px;
   margin: 10px 10px;
-  display: ${(props) => (props.active ? null : "none")};
+  display: ${(props) => (props.$active ? null : "none")};
   animation: ${FadeUp} 2s;
 `;
 function Skillbox({
   name,
   data,
-  active,
+  $active,
 }: {
   name: string;
   data: { name: string; gage: number }[];
-  active: boolean;
+  $active: boolean;
 }) {
   const delayTimes = new Array(data.length).fill(null);
   delayTimes.forEach((data, i) => {
@@ -53,11 +53,11 @@ function Skillbox({
 
   const delays = useDelay(delayTimes);
   return (
-    <SSkillList name={name} active={active}>
+    <SSkillList name={name} $active={$active}>
       <SName>{name}</SName>
       <SSkillBox>
         {data.map((data, i) => (
-          <SDiv active={delays[i]} key={i}>
+          <SDiv $active={delays[i]} key={i}>
             {data.name}
             <Gage gage={data.gage} />
           </SDiv>

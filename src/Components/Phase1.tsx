@@ -15,12 +15,12 @@ const SPhase1 = styled.div<{ phase: number }>`
   display: flex;
 `;
 
-const SSkills = styled.span<{ active: boolean }>`
+const SSkills = styled.span<{ $active: boolean }>`
   position: absolute;
   left: -105px;
   top: 20px;
   font-size: 40px;
-  display: ${(props) => (props.active ? null : "none")};
+  display: ${(props) => (props.$active ? null : "none")};
   animation: ${FadeUp} 1.5s;
 `;
 
@@ -50,10 +50,10 @@ function Phase1() {
   };
   return (
     <SPhase1 phase={phase}>
-      <SSkills active={skills}>Skills</SSkills>
-      <Skillbox active={box1} name={"FrontEnd"} data={skillList.frontEnd} />
-      <Skillbox active={box2} name={"BackEnd"} data={skillList.backEnd} />
-      <Skillbox active={box3} name={"else"} data={skillList.else} />
+      <SSkills $active={skills}>Skills</SSkills>
+      <Skillbox $active={box1} name={"FrontEnd"} data={skillList.frontEnd} />
+      <Skillbox $active={box2} name={"BackEnd"} data={skillList.backEnd} />
+      <Skillbox $active={box3} name={"else"} data={skillList.else} />
     </SPhase1>
   );
 }

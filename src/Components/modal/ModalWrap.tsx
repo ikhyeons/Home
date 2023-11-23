@@ -5,7 +5,7 @@ import { AisModal } from "../../utils/recoilStore";
 import { leftIn } from "../animation";
 import Line from "../Line";
 
-const Sdiv = styled.div<{ active: boolean }>`
+const Sdiv = styled.div`
   position: absolute;
   display: flex;
   justify-content: space-between;
@@ -13,8 +13,7 @@ const Sdiv = styled.div<{ active: boolean }>`
   height: 100vh;
   background: rgba(0, 0, 0, 0.9);
   z-index: 5;
-  display: ${(props) => (props.active ? null : "none")};
-  animation: ${leftIn} 1.5s;
+  animation: ${leftIn} 1s;
 `;
 
 const SClose = styled.div`
@@ -30,13 +29,13 @@ const SClose = styled.div`
   font-size: 35px;
   cursor: pointer;
 `;
-function ModalWrap({ active }: { active: boolean }) {
+function ModalWrap() {
   const [isModal, setIsModal] = useRecoilState(AisModal);
 
   return (
-    <Sdiv active={active}>
+    <Sdiv>
       <ProjectDetailModal />
-      <Line r={90} ls="85%" ts="0px" />
+      <Line r={90} ls="85%" ts="-10px" ms={1.1} />
       <SClose
         onClick={() => {
           setIsModal("off");

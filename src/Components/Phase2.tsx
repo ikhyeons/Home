@@ -1,7 +1,7 @@
 import { SAbsoluteDiv, SAbsoluteSpan } from "./styledComponent";
 import styled from "styled-components";
 import { useRecoilState } from "recoil";
-import { AisModal } from "../utils/recoilStore";
+import { AisModal, AisWheelReady } from "../utils/recoilStore";
 import Line from "./Line";
 import { FadeDown, FadeUp } from "./animation";
 import useDelay from "../utils/hooks/useActive";
@@ -17,14 +17,14 @@ const SMain = styled(SAbsoluteDiv)`
   margin: 0 80px 0 0;
 `;
 
-const SProjectCard = styled.div<{ active: boolean }>`
+const SProjectCard = styled.div<{ $active: boolean }>`
   overflow: hidden;
   width: 400px;
   height: 300px;
   margin: 30px 50px;
   background: grey;
   position: relative;
-  display: ${(props) => (props.active ? null : "none")};
+  display: ${(props) => (props.$active ? null : "none")};
   animation: ${FadeUp} 1.5s;
   transition: box-shadow 0.3s, transform 0.2s;
   &:hover {
@@ -82,10 +82,11 @@ function Phase2() {
 
   const active = useDelay([1000, 1500, 2000, 2500, 3000, 3500]);
   const [isModal, setIsModal] = useRecoilState(AisModal);
+  const [isWheelReady, setIsWheelReady] = useRecoilState(AisWheelReady);
   return (
     <>
       {linePosition.map((data, i) => (
-        <Line r={data.r} ls={data.ls} ts={data.ts} />
+        <Line key={i} r={data.r} ls={data.ls} ts={data.ts} />
       ))}
 
       <SProject left={280} top={20}>
@@ -95,6 +96,11 @@ function Phase2() {
         {projectListData.map((data, i) => (
           <SProjectCard
             onClick={() => {
+              setIsWheelReady(false);
+              setTimeout(() => {
+                setIsWheelReady(true);
+              }, 1000);
+
               switch (data.name) {
                 case "개인 블로그":
                   setIsModal("blog");
@@ -112,7 +118,7 @@ function Phase2() {
                   break;
               }
             }}
-            active={active[i]}
+            $active={active[i]}
             key={i}
           >
             <SImg src={data.img} alt={data.name} />
