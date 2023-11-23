@@ -1,6 +1,7 @@
 import { SAbsoluteDiv, SAbsoluteSpan } from "./styledComponent";
 import styled from "styled-components";
-
+import { useRecoilState } from "recoil";
+import { AisModal } from "../utils/recoilStore";
 import Line from "./Line";
 import { FadeDown, FadeUp } from "./animation";
 import useDelay from "../utils/hooks/useActive";
@@ -17,6 +18,7 @@ const SMain = styled(SAbsoluteDiv)`
 `;
 
 const SProjectCard = styled.div<{ active: boolean }>`
+  overflow: hidden;
   width: 400px;
   height: 300px;
   margin: 30px 50px;
@@ -24,18 +26,43 @@ const SProjectCard = styled.div<{ active: boolean }>`
   position: relative;
   display: ${(props) => (props.active ? null : "none")};
   animation: ${FadeUp} 1.5s;
+  transition: box-shadow 0.3s, transform 0.2s;
+  &:hover {
+    transform: translate(5px, -5px);
+    box-shadow: -5px 5px rgb(145, 0, 125);
+    cursor: pointer;
+    & > img {
+      filter: brightness(50%);
+    }
+    & > div {
+      transform: translate(-50%, -93%);
+    }
+  }
 `;
 const SImg = styled.img`
   width: 400px;
   height: 300px;
+  filter: brightness(80%);
 `;
-const SSpan = styled.span`
+const SSpanWrap = styled.div`
   position: absolute;
-  width: 250px;
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
   left: 50%;
   top: 50%;
-  transform: translateX(-50%);
+  transform: translate(-50%, 0px);
+  pointer-events: none;
+  transition: transform 0.3s ease-out;
+`;
+const SSpan = styled.span`
+  width: 250px;
+  text-align: center;
+  font-weight: bold;
+  text-shadow: 3px 3px 5px black;
+  font-size: 20px;
+  pointer-events: none;
 `;
 function Phase2() {
   const linePosition = [
@@ -47,15 +74,14 @@ function Phase2() {
   ];
 
   const projectListData = [
-    { name: "블로그 프로젝트", img: "" },
-    { name: "자취방 양도 프로젝트", img: "" },
-    { name: "협업 웹 프로젝트", img: "" },
-    { name: "텔로 드론 프로젝트", img: "" },
-    { name: "동물 분양 프로젝트", img: "" },
-    { name: "ICT GPT Connector 프로젝트", img: "" },
+    { name: "개인 블로그", img: "../public/imgs/블로그.png" },
+    { name: "자취방 양도 플랫폼", img: "../public/imgs/자취방양도.png" },
+    { name: "협업 웹", img: "../public/imgs/협업툴.png" },
+    { name: "동물 분양 플랫폼", img: "../public/imgs/동물분양.png" },
   ];
 
   const active = useDelay([1000, 1500, 2000, 2500, 3000, 3500]);
+  const [isModal, setIsModal] = useRecoilState(AisModal);
   return (
     <>
       {linePosition.map((data, i) => (
@@ -67,9 +93,33 @@ function Phase2() {
       </SProject>
       <SMain left={280} top={140}>
         {projectListData.map((data, i) => (
-          <SProjectCard active={active[i]} key={i}>
+          <SProjectCard
+            onClick={() => {
+              switch (data.name) {
+                case "개인 블로그":
+                  setIsModal("blog");
+                  break;
+                case "자취방 양도 플랫폼":
+                  setIsModal("realestate");
+                  break;
+                case "협업 웹":
+                  setIsModal("collabo");
+                  break;
+                case "동물 분양 플랫폼":
+                  setIsModal("animal");
+                  break;
+                default:
+                  break;
+              }
+            }}
+            active={active[i]}
+            key={i}
+          >
             <SImg src={data.img} alt={data.name} />
-            <SSpan>{data.name}</SSpan>
+            <SSpanWrap>
+              <SSpan>{data.name}</SSpan>
+              <SSpan>자세히 보기</SSpan>
+            </SSpanWrap>
           </SProjectCard>
         ))}
       </SMain>

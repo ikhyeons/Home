@@ -12,6 +12,14 @@ export const drawLine = keyframes<{ r: number }>`
         : `calc(100vw / ${Math.cos((props.r * Math.PI) / 180)})`};
   }
 `;
+export const leftIn = keyframes<{ r: number }>`
+  0% {
+    transform : translateX(-100%);
+  }
+
+  100% {
+    transform : translateX(0%);
+`;
 
 export const gageUp = keyframes<{ gage: number }>`
   0% {
