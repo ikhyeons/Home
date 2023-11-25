@@ -5,6 +5,7 @@ import { AisModal, AisWheelReady } from "../utils/recoilStore";
 import Line from "./Line";
 import { FadeDown, FadeUp } from "./animation";
 import useDelay from "../utils/hooks/useActive";
+import projectData from "../projectData";
 const SProject = styled(SAbsoluteSpan)`
   font-size: 40px;
   animation: ${FadeDown} 2.5s linear;
@@ -54,7 +55,7 @@ const SSpanWrap = styled.div`
   top: 50%;
   transform: translate(-50%, 0px);
   pointer-events: none;
-  transition: transform 0.3s ease-out;
+  transition: transform 0.2s ease-out;
 `;
 const SSpan = styled.span`
   width: 250px;
@@ -73,16 +74,32 @@ function Phase2() {
     },
   ];
 
-  const projectListData = [
-    { name: "개인 블로그", img: "../public/imgs/블로그.png" },
-    { name: "자취방 양도 플랫폼", img: "../public/imgs/자취방양도.png" },
-    { name: "협업 웹", img: "../public/imgs/협업툴.png" },
-    { name: "동물 분양 플랫폼", img: "../public/imgs/동물분양.png" },
-  ];
-
   const active = useDelay([1000, 1500, 2000, 2500, 3000, 3500]);
   const [isModal, setIsModal] = useRecoilState(AisModal);
   const [isWheelReady, setIsWheelReady] = useRecoilState(AisWheelReady);
+  function cardOnClickHandler(data: IprojectData) {
+    setIsWheelReady(false);
+    setTimeout(() => {
+      setIsWheelReady(true);
+    }, 1000);
+
+    switch (data.title) {
+      case "개인 블로그":
+        setIsModal("blog");
+        break;
+      case "자취방 양도 플랫폼":
+        setIsModal("realestate");
+        break;
+      case "협업 웹":
+        setIsModal("collabo");
+        break;
+      case "동물 분양 플랫폼":
+        setIsModal("animal");
+        break;
+      default:
+        break;
+    }
+  }
   return (
     <>
       {linePosition.map((data, i) => (
@@ -93,37 +110,17 @@ function Phase2() {
         PROJECT
       </SProject>
       <SMain left={280} top={140}>
-        {projectListData.map((data, i) => (
+        {projectData.map((data, i) => (
           <SProjectCard
             onClick={() => {
-              setIsWheelReady(false);
-              setTimeout(() => {
-                setIsWheelReady(true);
-              }, 1000);
-
-              switch (data.name) {
-                case "개인 블로그":
-                  setIsModal("blog");
-                  break;
-                case "자취방 양도 플랫폼":
-                  setIsModal("realestate");
-                  break;
-                case "협업 웹":
-                  setIsModal("collabo");
-                  break;
-                case "동물 분양 플랫폼":
-                  setIsModal("animal");
-                  break;
-                default:
-                  break;
-              }
+              cardOnClickHandler(data);
             }}
             $active={active[i]}
             key={i}
           >
-            <SImg src={data.img} alt={data.name} />
+            <SImg src={data.img} alt={data.title} />
             <SSpanWrap>
-              <SSpan>{data.name}</SSpan>
+              <SSpan>{data.title}</SSpan>
               <SSpan>자세히 보기</SSpan>
             </SSpanWrap>
           </SProjectCard>
