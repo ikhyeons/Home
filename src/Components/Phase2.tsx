@@ -83,22 +83,7 @@ function Phase2() {
       setIsWheelReady(true);
     }, 1000);
 
-    switch (data.title) {
-      case "개인 블로그":
-        setIsModal("blog");
-        break;
-      case "자취방 양도 플랫폼":
-        setIsModal("realestate");
-        break;
-      case "협업 웹":
-        setIsModal("collabo");
-        break;
-      case "동물 분양 플랫폼":
-        setIsModal("animal");
-        break;
-      default:
-        break;
-    }
+    setIsModal(data);
   }
   return (
     <>

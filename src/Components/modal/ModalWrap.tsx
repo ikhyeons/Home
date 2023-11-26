@@ -11,7 +11,7 @@ const Sdiv = styled.div`
   justify-content: space-between;
   width: 100vw;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.9);
+  background: rgba(0, 0, 0, 0.95);
   z-index: 5;
   animation: ${leftIn} 1s;
 `;

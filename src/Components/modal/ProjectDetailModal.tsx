@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import { useRecoilState } from "recoil";
+import { AisModal } from "../../utils/recoilStore";
 const SContentWrap = styled.div`
   flex: 1;
   position: relative;
@@ -7,7 +9,6 @@ const SContentWrap = styled.div`
 `;
 
 const SContent = styled.section`
-  background: grey;
   width: 70%;
   margin: 0 auto;
 `;
@@ -25,16 +26,29 @@ const SStep = styled.section`
   margin: 10px 5px;
   height: 80px;
 `;
+
 function ProjectDetailModal() {
+  const [projectData, SetProjectData] = useRecoilState(AisModal);
   return (
     <>
       <SContentWrap>
         <SContent>
-          <div>프로젝트 명</div>
-          <div>사용 스킬, 주요 라이브러리</div>
-          <div>기간</div>
-          <div>간단한 설명</div>
-          <div>url, git 등</div>
+          <div>{(projectData as IprojectData).title}</div>
+          <div>skills</div>
+          {(projectData as IprojectData).skills.fe && (
+            <div>{(projectData as IprojectData).skills.fe}</div>
+          )}
+          {(projectData as IprojectData).skills.be && (
+            <div>{(projectData as IprojectData).skills.be}</div>
+          )}
+          {(projectData as IprojectData).skills.deploy && (
+            <div>{(projectData as IprojectData).skills.deploy}</div>
+          )}
+          <div>{(projectData as IprojectData).period}</div>
+          <div>{(projectData as IprojectData).summary}</div>
+          <a href={(projectData as IprojectData).url} target="_blank">
+            {(projectData as IprojectData).url}
+          </a>
         </SContent>
 
         <SPhase>
