@@ -1,12 +1,12 @@
 export const projectData: IprojectData[] = [
   {
-    title: "개인 블로그",
+    title: "개인 블로그 프로젝트",
     img: "../public/imgs/블로그.png",
     period: "2023.06.29 ~ 10.01",
     skills: {
       fe: ["TS, Next(13)", "Redux(RTK, RTK-Query)", "SCSS", "반응형 웹"],
       be: ["Node(Express)", "MySQL"],
-      deploy: ["EC2(BE)", "GitActions", "Vercel(FE)", "S3"],
+      deploy: ["Vercel(FE)", "EC2(BE)", "GitActions", "S3"],
     },
     summary:
       "공부한 내용들을 정리, 기록하기 위하여 개인 블로그를 제작하였습니다.",
@@ -35,7 +35,7 @@ export const projectData: IprojectData[] = [
       deploy: [],
     },
     summary:
-      "자취생들이 원룸 계약이 끝나기전에 불가피하게 방을 빼야할 일이 생길 경우 원룸을 양도해야 하는데, 기존에 에브리타임을 많이 이용하였습니다. 이 때 불편한 점을 직방을 참고하여 분리해서 하나의 플랫폼으로 만들었습니다.",
+      "자취생들이 원룸 계약이 끝나기전에 불가피하게 방을 빼야할 일이 생길 경우 에브리타임에서 양도받을 사람을 구하는 불편한 점을 해결하고자 제작하였습니다.",
     url: "",
     funtion: [
       { name: "지도에 방 목록", description: "", img: "", skills: ["react"] },
