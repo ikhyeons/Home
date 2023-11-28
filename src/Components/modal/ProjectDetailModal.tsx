@@ -12,8 +12,10 @@ const SContentWrap = styled.div`
 const SContent = styled.section`
   font-size: 2rem;
   width: 50%;
-  margin-left: 30%;
+  margin-left: 15%;
 `;
+
+const SFunction = styled.div``;
 
 const SUrlLink = styled.a`
   font-size: 1rem;
@@ -56,6 +58,7 @@ const SSkill = styled.div`
 const SSummary = styled.div`
   font-size: 1.5rem;
   margin-left: 35px;
+  margin-bottom: 35px;
 `;
 
 function ProjectDetailModal() {
@@ -64,7 +67,19 @@ function ProjectDetailModal() {
   const [phase, setPhase] = useState(0);
   return (
     <>
-      <SContentWrap>
+      <SContentWrap
+        onWheel={(e) => {
+          e.deltaY > 0
+            ? setPhase((prev) => {
+                if (prev < pjData.funtion?.length!) return prev + 1;
+                else return prev;
+              })
+            : setPhase((prev) => {
+                if (prev > 0) return prev - 1;
+                else return prev;
+              });
+        }}
+      >
         <SContent>
           <STitle>
             {pjData.title}
@@ -81,6 +96,15 @@ function ProjectDetailModal() {
           </SSkills>
           Summary
           <SSummary>{pjData.summary}</SSummary>
+          Core Functions
+          {pjData.funtion?.map((data, i) => (
+            <SFunction key={i}>
+              {data.img}
+              {data.name}
+              {data.skills}
+              {data.description}
+            </SFunction>
+          ))}
         </SContent>
 
         <SPhase>
