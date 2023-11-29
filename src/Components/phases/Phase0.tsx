@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import { FadeUp } from "./animation";
-import useDelay from "../utils/hooks/useActive";
+import { FadeUp } from "../animation";
+import useDelay from "../../utils/hooks/useActive";
 import { useRecoilState } from "recoil";
-import { Aphase } from "../utils/recoilStore";
+import { Aphase } from "../../utils/recoilStore";
 
 const SPhase0 = styled.div<{ phase: number }>`
   position: absolute;

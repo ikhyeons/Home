@@ -1,11 +1,11 @@
-import { SAbsoluteDiv, SAbsoluteSpan } from "./styledComponent";
+import { SAbsoluteDiv, SAbsoluteSpan } from "../styledComponent";
 import styled from "styled-components";
 import { useRecoilState } from "recoil";
-import { AisModal, AisWheelReady } from "../utils/recoilStore";
-import Line from "./Line";
-import { FadeDown, FadeUp } from "./animation";
-import useDelay from "../utils/hooks/useActive";
-import projectData from "../projectData";
+import { AisModal, AisWheelReady } from "../../utils/recoilStore";
+import Line from "../Line";
+import { FadeDown, FadeUp } from "../animation";
+import useDelay from "../../utils/hooks/useActive";
+import projectData from "../../projectData";
 const SProject = styled(SAbsoluteSpan)`
   font-size: 40px;
   animation: ${FadeDown} 2.5s linear;

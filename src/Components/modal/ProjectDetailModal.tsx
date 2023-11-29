@@ -6,16 +6,26 @@ const SContentWrap = styled.div`
   flex: 1;
   position: relative;
   display: flex;
-  align-items: center;
 `;
 
 const SContent = styled.section`
   font-size: 2rem;
-  width: 50%;
+  width: 60%;
   margin-left: 15%;
 `;
 
-const SFunction = styled.div``;
+const SImg = styled.img`
+  width: 100%;
+  height: 480px;
+`;
+
+const SMain = styled.div`
+  margin-top: 30%;
+`;
+
+const SFunction = styled.div`
+  margin-top: 15%;
+`;
 
 const SUrlLink = styled.a`
   font-size: 1rem;
@@ -81,26 +91,32 @@ function ProjectDetailModal() {
         }}
       >
         <SContent>
-          <STitle>
-            {pjData.title}
-            <SUrlLink href={(projectData as IprojectData).url} target="_blank">
-              {pjData.url}
-            </SUrlLink>
-          </STitle>
-          <SPeriod>{pjData.period}</SPeriod>
-          <SSkills>
-            Skills
-            <Skill skillData={pjData.skills.fe} type={"FE"} />
-            <Skill skillData={pjData.skills.be} type={"BE"} />
-            <Skill skillData={pjData.skills.deploy} type={"Deploy"} />
-          </SSkills>
-          Summary
-          <SSummary>{pjData.summary}</SSummary>
-          Core Functions
-          <hr />
-          {pjData.funtion?.map((data, i) => (
-            <Functions data={data} key={i} />
-          ))}
+          {phase == 0 ? (
+            <SMain>
+              <STitle>
+                {pjData.title}
+                <SUrlLink
+                  href={(projectData as IprojectData).url}
+                  target="_blank"
+                >
+                  {pjData.url}
+                </SUrlLink>
+              </STitle>
+              <SPeriod>{pjData.period}</SPeriod>
+              <SSkills>
+                Skills
+                <Skill skillData={pjData.skills.fe} type={"FE"} />
+                <Skill skillData={pjData.skills.be} type={"BE"} />
+                <Skill skillData={pjData.skills.deploy} type={"Deploy"} />
+              </SSkills>
+              Summary
+              <SSummary>{pjData.summary}</SSummary>
+            </SMain>
+          ) : null}
+
+          {pjData.funtion?.map((data, i) =>
+            phase - 1 == i ? <Functions data={data} key={i} /> : null
+          )}
         </SContent>
 
         <SPhase>
@@ -141,9 +157,14 @@ function Functions({
 }) {
   return (
     <SFunction>
-      <img src={data.img} alt="" />
-      {data.name}
-      {data.description}
+      <span style={{ color: "purple", marginRight: "10px" }}>
+        Core Functions
+      </span>
+      <span>{data.name}</span>
+      <hr />
+
+      {data.img && <SImg src={data.img} alt="기능 이미지" />}
+      <span style={{ fontSize: "22px" }}>{data.description}</span>
     </SFunction>
   );
 }

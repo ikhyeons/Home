@@ -11,6 +11,7 @@ function App() {
     { r: 0, ls: "300px", ts: "700px" },
     { r: 0, ls: "300px", ts: "150px" },
     { r: 90, ls: "250px", ts: "-10px" },
+    { r: 0, ls: "250px", ts: "800px" },
   ];
 
   return (

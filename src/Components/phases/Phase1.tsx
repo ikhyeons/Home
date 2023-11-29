@@ -1,10 +1,10 @@
 import styled from "styled-components";
-import Gage from "./Gage";
+import Gage from "../Gage";
 import { useRecoilState } from "recoil";
-import { Aphase } from "../utils/recoilStore";
-import useDelay from "../utils/hooks/useActive";
-import { FadeUp } from "./animation";
-import Skillbox from "./Skillbox";
+import { Aphase } from "../../utils/recoilStore";
+import useDelay from "../../utils/hooks/useActive";
+import { FadeUp } from "../animation";
+import Skillbox from "../Skillbox";
 
 const SPhase1 = styled.div<{ phase: number }>`
   position: absolute;
