@@ -97,13 +97,9 @@ function ProjectDetailModal() {
           Summary
           <SSummary>{pjData.summary}</SSummary>
           Core Functions
+          <hr />
           {pjData.funtion?.map((data, i) => (
-            <SFunction key={i}>
-              {data.img}
-              {data.name}
-              {data.skills}
-              {data.description}
-            </SFunction>
+            <Functions data={data} key={i} />
           ))}
         </SContent>
 
@@ -131,6 +127,24 @@ function Skill({ skillData, type }: { skillData: string[]; type: string }) {
         </SSkill>
       )}
     </>
+  );
+}
+
+function Functions({
+  data,
+}: {
+  data: {
+    name: string;
+    description: string;
+    img: string;
+  };
+}) {
+  return (
+    <SFunction>
+      <img src={data.img} alt="" />
+      {data.name}
+      {data.description}
+    </SFunction>
   );
 }
 

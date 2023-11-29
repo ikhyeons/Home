@@ -12,7 +12,6 @@ declare global {
       name: string;
       description: string;
       img: string;
-      skills: string[];
     }[];
   }
 }

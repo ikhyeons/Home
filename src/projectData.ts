@@ -12,9 +12,22 @@ export const projectData: IprojectData[] = [
       "공부한 내용들을 정리, 기록하기 위하여 개인 블로그를 제작하였습니다.",
     url: "https://blog.ikhyeons.net",
     funtion: [
-      { name: "게시글 CRUD", description: "", img: "", skills: ["react"] },
-      { name: "게시글 검색", description: "", img: "", skills: ["react"] },
-      { name: "로그인", description: "", img: "", skills: ["react"] },
+      {
+        name: "게시글 CRUD",
+        description: "Ajax 통신을 이용하여 게시글 CRUD를 구현하였습니다.",
+        img: "",
+      },
+      {
+        name: "게시글 검색",
+        description: "MySQL 쿼리문으로 게시글 검색을 구현하였습니다.",
+        img: "",
+      },
+      {
+        name: "로그인",
+        description:
+          "JWT를 이용하여 access token과 refresh token을 사용하여 로그인을 구현하였습니다.",
+        img: "",
+      },
     ],
   },
   {
@@ -38,16 +51,33 @@ export const projectData: IprojectData[] = [
       "자취생들이 원룸 계약이 끝나기전에 불가피하게 방을 빼야할 일이 생길 경우 에브리타임에서 양도받을 사람을 구하는 불편한 점을 해결하고자 제작하였습니다.",
     url: "",
     funtion: [
-      { name: "지도에 방 목록", description: "", img: "", skills: ["react"] },
-      { name: "방CRUD", description: "", img: "", skills: ["react"] },
       {
-        name: "방 검색 및 필터",
+        name: "지도에 방 목록 표시",
+        description:
+          "DB에 등록된 방을 kakao map라이브러리를 이용하여 지도 위에 표시하였습니다.",
+        img: "",
+      },
+      {
+        name: "게시글CRUD",
+        description: "Ajax 통신을 이용하여 게시글 CRUD를 구현하였습니다.",
+        img: "",
+      },
+      {
+        name: "방 필터",
         description: "",
         img: "",
-        skills: ["react"],
       },
-      { name: "로그인", description: "", img: "", skills: ["react"] },
-      { name: "실시간 알림", description: "", img: "", skills: ["react"] },
+      {
+        name: "로그인",
+        description: "",
+        img: "MySQL session를 이용하여 세션 로그인을 구현하였습니다.",
+      },
+      {
+        name: "실시간 알림",
+        description:
+          "websocket을 이용하여 게시글의 알림이나 채팅 문의를 실시간으로 구현하였습니다.",
+        img: "",
+      },
     ],
   },
   {
@@ -62,9 +92,28 @@ export const projectData: IprojectData[] = [
     summary: "Notion, Collabee등을 참고하여 제작한 협업을 위한 웹 플랫폼",
     url: "3",
     funtion: [
-      { name: "문서 CRUD", description: "", img: "", skills: ["react"] },
-      { name: "실시간 채팅", description: "", img: "", skills: ["react"] },
-      { name: "드래그 앤 드랍", description: "", img: "", skills: ["react"] },
+      {
+        name: "문서 CRUD",
+        description: "Ajax 통신을 이용하여 게시글 CRUD를 구현하였습니다.",
+        img: "",
+      },
+      {
+        name: "달력 일정 입력",
+        description:
+          "full calendar를 이용하여 달력에 일정을 기록할 수 있도록 구현하였습니다.",
+        img: "",
+      },
+      {
+        name: "실시간 채팅",
+        description: "websocket을 이용하여 실시간 채팅을 구현하였습니다.",
+        img: "",
+      },
+      {
+        name: "드래그 앤 드랍",
+        description:
+          "react-dnd 라이브러리를 이용하여 드래그 앤 드랍을 구현하였습니다.",
+        img: "",
+      },
     ],
   },
   {
@@ -80,8 +129,16 @@ export const projectData: IprojectData[] = [
       "강아지, 고양이, 기타 동물들을 분양하는 플랫폼으로 모바일 화면을 중점으로 제작하였습니다.",
     url: "",
     funtion: [
-      { name: "실시간 알람", description: "", img: "", skills: ["react"] },
-      { name: "어드민 페이지", description: "", img: "", skills: ["react"] },
+      {
+        name: "실시간 알람",
+        description: "websocket을 이용하여 실시간 알람을 구현하였습니다.",
+        img: "",
+      },
+      {
+        name: "어드민 페이지",
+        description: "chartjs를 이용하여 그래프로 데이터 시각화하였습니다.",
+        img: "",
+      },
     ],
   },
   {
@@ -98,9 +155,8 @@ export const projectData: IprojectData[] = [
     funtion: [
       {
         name: "애니메이션",
-        description: "CSS애니메이션으로 화면 구성",
+        description: "CSS애니메이션으로 화면을 구성하였습니다.",
         img: "",
-        skills: ["react"],
       },
     ],
   },
