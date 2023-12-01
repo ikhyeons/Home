@@ -18,10 +18,7 @@ const SLine = styled.div<{ r: number; ms?: number }>`
   transition: rotate 1.5s;
 `;
 
-const SLineWrap = styled.div<{
-  ls: string;
-  ts: string;
-}>`
+const SLineWrap = styled.div<{ ls: string; ts: string }>`
   position: absolute;
   transform: translate(${(props) => props.ls}, ${(props) => props.ts});
   transition: transform 1.5s;
