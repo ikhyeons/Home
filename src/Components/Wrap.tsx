@@ -9,7 +9,7 @@ import { AisWheelReady, Aphase } from "../utils/recoilStore";
 import Phase3 from "./phases/Phase3";
 
 const SWrap = styled.section`
-  background: rgb(30, 40, 30);
+  background: rgb(25, 35, 25);
   height: 100dvh;
   width: 100dvw;
   overflow: hidden;
