@@ -30,7 +30,7 @@ const SClose = styled.div`
   cursor: pointer;
 `;
 function ModalWrap() {
-  const [isModal, setIsModal] = useRecoilState(AisModal);
+  const [, setIsModal] = useRecoilState(AisModal);
 
   return (
     <Sdiv>

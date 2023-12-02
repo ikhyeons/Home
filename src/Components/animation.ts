@@ -1,5 +1,17 @@
 import { keyframes } from "styled-components";
 
+export const upDown = keyframes`
+  0% {
+    transform : translateY(0px);
+  }
+  50%{
+    transform : translateY(-3px);
+  }
+  100% {
+    transform : translateY(0px);
+  }
+`;
+
 export const drawLine = keyframes<{ r: number }>`
   0% {
     width : 0px;
@@ -12,6 +24,7 @@ export const drawLine = keyframes<{ r: number }>`
         : `calc(100vw / ${Math.cos((props.r * Math.PI) / 180)})`};
   }
 `;
+
 export const leftIn = keyframes<{ r: number }>`
   0% {
     transform : translateX(-100%);

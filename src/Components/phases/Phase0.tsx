@@ -13,8 +13,10 @@ const SPhase0 = styled.div<{ phase: number }>`
   transition: top 1.5s;
 `;
 
-const SHead = styled.div`
+const SHead = styled.div<{ $phase: number }>`
   position: relative;
+  margin-left: ${(props) => (props.$phase < 1 ? "195px;" : "0px;")};
+  transition: margin-left 1s;
 `;
 
 const SName = styled.span<{ $active: boolean }>`
@@ -44,7 +46,7 @@ const SSpan = styled.span<{ $active: boolean }>`
 `;
 
 function Phase0() {
-  const [phase, setPhase] = useRecoilState(Aphase);
+  const [phase] = useRecoilState(Aphase);
   const [n1, n2, s1, s2, s3, s4] = useDelay([
     1000, 1500, 2000, 2500, 3000, 3500,
   ]);
@@ -52,7 +54,7 @@ function Phase0() {
   return (
     <SPhase0 phase={phase}>
       <SIntroduce $active={n2}>About Me</SIntroduce>
-      <SHead>
+      <SHead $phase={phase}>
         <SName style={{ fontSize: "30px" }} $active={n1}>
           성익현 | FrontEnd Developer
         </SName>

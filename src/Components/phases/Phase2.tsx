@@ -75,8 +75,8 @@ function Phase2() {
   ];
 
   const active = useDelay([1000, 1500, 2000, 2500, 3000, 3500]);
-  const [isModal, setIsModal] = useRecoilState(AisModal);
-  const [isWheelReady, setIsWheelReady] = useRecoilState(AisWheelReady);
+  const [, setIsModal] = useRecoilState(AisModal);
+  const [, setIsWheelReady] = useRecoilState(AisWheelReady);
   function cardOnClickHandler(data: IprojectData) {
     setIsWheelReady(false);
     setTimeout(() => {
@@ -92,7 +92,7 @@ function Phase2() {
       ))}
 
       <SProject left={280} top={20}>
-        PROJECT
+        PROJECTS
       </SProject>
       <SMain left={280} top={140}>
         {projectData.map((data, i) => (

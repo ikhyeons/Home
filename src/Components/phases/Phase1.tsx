@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import Gage from "../Gage";
 import { useRecoilState } from "recoil";
 import { Aphase } from "../../utils/recoilStore";
 import useDelay from "../../utils/hooks/useActive";
@@ -25,7 +24,7 @@ const SSkills = styled.span<{ $active: boolean }>`
 `;
 
 function Phase1() {
-  const [phase, setPhase] = useRecoilState(Aphase);
+  const [phase] = useRecoilState(Aphase);
   const [skills, box1, box2, box3] = useDelay([500, 1200, 1700, 2200]);
   const skillList = {
     frontEnd: [

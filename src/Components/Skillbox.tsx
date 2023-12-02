@@ -47,7 +47,7 @@ function Skillbox({
   $active: boolean;
 }) {
   const delayTimes = new Array(data.length).fill(null);
-  delayTimes.forEach((data, i) => {
+  delayTimes.forEach((_, i) => {
     delayTimes[i] = 500 * i + 1000;
   });
 

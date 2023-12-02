@@ -17,11 +17,11 @@ function Phase3() {
   const [title, info] = useDelay([700, 1300]);
   return (
     <div>
-      <SContactInfo left={250} top={770} $active={info}>
+      <SContactInfo left={300} top={700} $active={info}>
         skantrkwl789@naver.com | 010-8689-1432
       </SContactInfo>
-      <SContact left={250} top={800} $active={title}>
-        Contact Me
+      <SContact left={300} top={730} $active={title}>
+        Thank You
       </SContact>
     </div>
   );

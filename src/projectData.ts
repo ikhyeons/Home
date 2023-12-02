@@ -14,17 +14,18 @@ export const projectData: IprojectData[] = [
     funtion: [
       {
         name: "게시글 CRUD",
-        description: "Ajax 통신을 이용하여 게시글 CRUD를 구현하였습니다.",
+        description: "AJAX 통신을 이용하여 게시글 CRUD를 구현하였습니다.",
         img: "../public/imgs/blog/crud.gif",
       },
       {
         name: "게시글 검색",
-        description: "MySQL 쿼리문으로 게시글 검색을 구현하였습니다.",
+        description: "MySQL 쿼리로 게시글 검색을 구현하였습니다.",
         img: "../public/imgs/blog/search.gif",
       },
       {
         name: "로그인",
-        description: "JWT를 이용하여 로그인을 구현하였습니다.",
+        description:
+          "JWT의 AccessToken과 RefreshToken을 이용하여 로그인을 구현하였습니다.",
         img: "../public/imgs/blog/login.gif",
       },
     ],
@@ -53,28 +54,30 @@ export const projectData: IprojectData[] = [
       {
         name: "지도에 방 목록 표시",
         description:
-          "DB에 등록된 방을 kakao map라이브러리를 이용하여 지도 위에 표시하였습니다.",
+          "DB에 등록된 방을 Kakao Map라이브러리를 이용하여 지도 위에 표시하였습니다.",
         img: "../public/imgs/realEstate/upload.gif",
       },
       {
         name: "게시글CRUD",
-        description: "Ajax 통신을 이용하여 게시글 CRUD를 구현하였습니다.",
+        description:
+          "AJAX 통신을 이용하여 커뮤니티 게시글 CRUD를 구현하였습니다.",
         img: "../public/imgs/realEstate/crud.gif",
       },
       {
         name: "방 필터",
-        description: "",
+        description:
+          "원룸, 투룸, 추가적인 옵션을 통해서 방의 목록을 필터링 할 수 있게 하였습니다.",
         img: "../public/imgs/realEstate/filter.gif",
       },
       {
         name: "로그인",
-        description: "MySQL session를 이용하여 세션 로그인을 구현하였습니다.",
+        description: "MySQL session로그인을 이용하여 로그인을 구현하였습니다.",
         img: "../public/imgs/realEstate/login.gif",
       },
       {
         name: "실시간 알림",
         description:
-          "websocket을 이용하여 게시글의 알림이나 채팅 문의를 실시간으로 구현하였습니다.",
+          "WebSocket을 이용하여 게시글의 알림이나 채팅 문의를 실시간으로 구현하였습니다.",
         img: "../public/imgs/realEstate/alarm.gif",
       },
     ],
@@ -89,28 +92,28 @@ export const projectData: IprojectData[] = [
       deploy: [],
     },
     summary: "Notion, Collabee등을 참고하여 제작한 협업을 위한 웹 플랫폼",
-    url: "3",
+    url: "",
     funtion: [
       {
         name: "문서 CRUD",
-        description: "Ajax 통신을 이용하여 게시글 CRUD를 구현하였습니다.",
+        description: "AJAX 통신을 이용하여 게시글 CRUD를 구현하였습니다.",
         img: "../public/imgs/collab/crud.gif",
       },
       {
         name: "달력 일정 입력",
         description:
-          "full calendar를 이용하여 달력에 일정을 기록할 수 있도록 구현하였습니다.",
+          "Full Calendar를 이용하여 달력에 일정을 기록할 수 있도록 구현하였습니다.",
         img: "../public/imgs/collab/addSchedule.gif",
       },
       {
         name: "실시간 채팅",
-        description: "websocket을 이용하여 실시간 채팅을 구현하였습니다.",
+        description: "WebSocket을 이용하여 실시간 채팅을 구현하였습니다.",
         img: "../public/imgs/collab/chat.gif",
       },
       {
         name: "드래그 앤 드랍",
         description:
-          "react-dnd 라이브러리를 이용하여 드래그 앤 드랍을 구현하였습니다.",
+          "React-Dnd 라이브러리를 이용하여 컴포넌트 드래그 앤 드랍을 구현하였습니다.",
         img: "../public/imgs/collab/dnd.gif",
       },
     ],
@@ -130,13 +133,13 @@ export const projectData: IprojectData[] = [
     funtion: [
       {
         name: "실시간 알람",
-        description: "websocket을 이용하여 실시간 알람을 구현하였습니다.",
-        img: "",
+        description: "WebSocket을 이용하여 실시간 알람을 구현하였습니다.",
+        img: "../public/imgs/동물분양.png",
       },
       {
         name: "어드민 페이지",
-        description: "chartjs를 이용하여 데이터 시각화를 하였습니다.",
-        img: "",
+        description: "Chart.js를 이용하여 데이터를 시각화 하였습니다.",
+        img: "../public/imgs/동물분양.png",
       },
     ],
   },
@@ -145,7 +148,7 @@ export const projectData: IprojectData[] = [
     img: "../public/imgs/포트폴리오.png",
     period: "2023.11.16 ~ 11.24",
     skills: {
-      fe: ["React", "Recoil", "Styled-Components", "반응형 웹"],
+      fe: ["React", "Recoil", "Styled-Components", "babylon.js"],
       be: [],
       deploy: [],
     },
@@ -153,9 +156,10 @@ export const projectData: IprojectData[] = [
     url: "https://blog.ikhyeons.net/resume",
     funtion: [
       {
-        name: "애니메이션",
-        description: "CSS애니메이션으로 화면을 구성하였습니다.",
-        img: "",
+        name: "바빌론 3d모델",
+        description:
+          "blender에서 가져온 3D모델을 리액트에서 가져와 표시하였습니다.",
+        img: "../public/imgs/portfolio/babylon.gif",
       },
     ],
   },

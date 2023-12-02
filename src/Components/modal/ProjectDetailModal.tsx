@@ -72,7 +72,7 @@ const SSummary = styled.div`
 `;
 
 function ProjectDetailModal() {
-  const [projectData, setProjectData] = useRecoilState(AisModal);
+  const [projectData] = useRecoilState(AisModal);
   const pjData = projectData as IprojectData;
   const [phase, setPhase] = useState(0);
   return (
@@ -121,7 +121,7 @@ function ProjectDetailModal() {
 
         <SPhase>
           <SStep $phase={0} $currentPhase={phase} />
-          {pjData.funtion?.map((data, i) => (
+          {pjData.funtion?.map((_, i) => (
             <SStep $phase={i + 1} $currentPhase={phase} />
           ))}
         </SPhase>
