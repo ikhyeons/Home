@@ -145,14 +145,14 @@ export const projectData: IprojectData[] = [
   },
   {
     title: "포트폴리오",
-    img: "../resume/imgs/포트폴리오.png",
+    img: "../resume/Imgs/포트폴리오.png",
     period: "2023.11.16 ~ 11.24",
     skills: {
       fe: ["React", "Recoil", "Styled-Components", "babylon.js"],
       be: [],
       deploy: [],
     },
-    summary: "포트폴리오",
+    summary: "포트폴리오를 React로 생성",
     url: "https://blog.ikhyeons.net/resume",
     funtion: [
       {
