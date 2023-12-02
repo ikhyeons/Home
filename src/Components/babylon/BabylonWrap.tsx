@@ -32,21 +32,26 @@ function BabylonWrap() {
     camera.inputs.removeByType("ArcRotateCameraMouseWheelInput");
     camera.inputs.removeByType("ArcRotateCameraKeyboardMoveInput");
 
-    SceneLoader.Append("/babylonModel/", "main6.babylon", scene, (scene) => {
-      var material = new StandardMaterial("material", scene);
-      material.reflectionFresnelParameters = new FresnelParameters();
-      material.reflectionFresnelParameters.bias = 0.1; // 반사의 강도 조절
-      material.reflectionFresnelParameters.power = 2; // 반사의 세기를 결정
+    SceneLoader.Append(
+      "/resume/babylonModel/",
+      "main6.babylon",
+      scene,
+      (scene) => {
+        var material = new StandardMaterial("material", scene);
+        material.reflectionFresnelParameters = new FresnelParameters();
+        material.reflectionFresnelParameters.bias = 0.1; // 반사의 강도 조절
+        material.reflectionFresnelParameters.power = 2; // 반사의 세기를 결정
 
-      scene.meshes[1].material = material;
-      scene.meshes[2].material = material;
-      scene.meshes[3].rotate(new Vector3(0, 2 * Math.PI, 0), 3);
-      scene.meshes[3].position.y = -5;
-      scene.meshes[3].position.x = -0.1;
-      scene.meshes[1].position.y = -5;
-      scene.meshes[2].position.y = -5;
-      scene.meshes[1].position.z = 0.5;
-    });
+        scene.meshes[1].material = material;
+        scene.meshes[2].material = material;
+        scene.meshes[3].rotate(new Vector3(0, 2 * Math.PI, 0), 3);
+        scene.meshes[3].position.y = -5;
+        scene.meshes[3].position.x = -0.1;
+        scene.meshes[1].position.y = -5;
+        scene.meshes[2].position.y = -5;
+        scene.meshes[1].position.z = 0.5;
+      }
+    );
     var ground = MeshBuilder.CreateDisc("ground", { radius: 3 }, scene);
     ground.rotate(new Vector3(1, 0, 0), Math.PI / 2);
     ground.position.y = -5;
